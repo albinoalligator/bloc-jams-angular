@@ -1,7 +1,9 @@
 //using factory recipe - injects a function
 (function(){
     function Fixtures(){
-        var fixtures = {};
+        var Fixtures = {};
+        
+        
         
         var albumPicasso = {
             title: 'The Colors',
@@ -33,13 +35,33 @@
             ]
         };
         
+        
+     Fixtures.getCollection = function(numberOfAlbums){
+            var albums = [];
+            
+            for(var i = 0; i < numberOfAlbums; i++){
+                albums.push(albumPicasso);
+            }
+            
+            return albums;
+            
+        };
+        
+        
         Fixtures.getAlbum = function(){
             return albumPicasso;
         };
         
         
-        return fixtures;
+        
+      
+        
+        return Fixtures;   
+       
     }
+    
+    
+       
     
     angular
         .module('blocJams')

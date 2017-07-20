@@ -5,5 +5,5 @@
     
     angular
         .module('blocJams')
-        .controller('AlbumCtrl', ['Fixtures', AlbumCtrl);//array of dependecies - added to make accessible to this controller
+        .controller('AlbumCtrl', ['Fixtures', AlbumCtrl]);//array of dependecies - added to make accessible to this controller
 })();
