@@ -32,8 +32,7 @@
         */
         var setSong = function(song){
             if(currentBuzzObject){
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
+                stopSong(song);
             }
             
             currentBuzzObject = new buzz.sound(song.audioUrl,{
@@ -51,7 +50,7 @@
         */
         var playSong = function(song){
             currentBuzzObject.play();
-            song.playing = true;
+            SongPlayer.currentSong.playing = true;
         };
         
         /**
@@ -62,6 +61,16 @@
         */
         var getSongIndex = function(song){
             return currentAlbum.songs.indexOf(song);
+        };
+        
+        /**
+        *@function stopSong
+        *@desc stops the currentBuzzObject and sets playing property to null
+        *@param {Object} song
+        */ 
+        var stopSong = function(song){
+            currentBuzzObject.stop();
+            SongPlayer.currentSong.playing = null;
         };
                 
         /**
@@ -101,19 +110,33 @@
         
         /**
         *@function SongPlayer.previous
-        *@desc If current index is < 0 the current song is stopped else the current song index is set and song is played
+        *@desc If current index is <0 the current song is stopped else the current song index is decreased and the song is set is played
         */
         SongPlayer.previous = function(){
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex--;
             
             if(currentSongIndex < 0){
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
+                stopSong(song);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
                 playSong(song);
+            }
+        };
+        /**
+        *@function SongPlayer.next
+        *@desc If the current index is 0+ then the current song index is increased and the song is played 
+        */ 
+        SongPlayer.next = function(){
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            currentSongIndex++;
+            
+            if(currentSongIndex >= 0){
+                stopSong(song);
+                var song = currentAlbum.songs[currentSongIndex];
+                setSong(song);
+                playSong(song);     
             }
         };
         
