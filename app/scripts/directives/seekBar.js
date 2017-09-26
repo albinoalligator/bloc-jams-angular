@@ -35,6 +35,12 @@
                     };
                 };
                 
+                scope.thumbStyle = function(){
+                        return {
+                            left: percentString()
+                        };
+                };
+                
                 //updates the seek bar value based on the seek bar's width and the location of the users click on the seek bar
                 scope.onClickSeekBar = function(event){
                     var percent = calculatePercent(seekBar, event);
