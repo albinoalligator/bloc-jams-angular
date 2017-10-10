@@ -92,6 +92,13 @@
         SongPlayer.currentTime = null;
         
         /**
+        *@desc Current volume 
+        *@type {number}
+        */
+        
+        SongPlayer.volume = 0;
+        
+        /**
         *@function SongPlayer.play
         *@desc Checks if song clicked is current song playing and plays song clicked, else current song playing was paused and is played again
         *@param {Object} song
@@ -161,6 +168,12 @@
         SongPlayer.setCurrentTime = function(time){
             if (currentBuzzObject){
                 currentBuzzObject.setTime(time);
+            }
+        };
+        
+        SongPlayer.setVolume = function(){
+            if (currentBuzzObject){
+                currentBuzzObject.setVolume();
             }
         };
         
