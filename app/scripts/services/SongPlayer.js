@@ -96,7 +96,7 @@
         *@type {number}
         */
         
-        SongPlayer.volume = 0;
+        SongPlayer.volume = null;
         
         /**
         *@function SongPlayer.play
@@ -171,9 +171,11 @@
             }
         };
         
-        SongPlayer.setVolume = function(){
+        //sets volume on currently playing song object on a scale of 0-100
+        
+        SongPlayer.setVolume = function(volume){
             if (currentBuzzObject){
-                currentBuzzObject.setVolume();
+                currentBuzzObject.setVolume(volume);
             }
         };
         
